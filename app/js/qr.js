@@ -9,8 +9,8 @@ const dot = document.getElementById("dot")
 const downloadBtn = document.getElementById("downloadBtn")
 
 let op = {
-    width: 300,
-    height: 300,
+    width: 250,
+    height: 250,
     type: "png",
     data: "https://cadeals.netlify.app/",
     image: "",
