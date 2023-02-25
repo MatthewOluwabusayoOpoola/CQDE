@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="utf-8">
+	<title>CQDE</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+	<meta name="description" content="This is meta description">
+	<meta name="author" content="matthewoluwabusyoopoola">
+	<link rel="shortcut icon" href="images/Qr/logo.png" type="image/x-icon">
+	<link rel="icon" href="images/Qr/logo.png" type="image/x-icon">
+
+	<!-- # Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+
+	<!-- # CSS Plugins -->
+	<link rel="stylesheet" href="plugins/slick/slick.css">
+	<link rel="stylesheet" href="plugins/font-awesome/fontawesome.min.css">
+	<link rel="stylesheet" href="plugins/font-awesome/brands.css">
+	<link rel="stylesheet" href="plugins/font-awesome/solid.css">
+
+	<!-- # Main Style Sheet -->
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- # External Js -->
+	<script type="text/javascript" src="js/lib.js"></script>
+</head>
+
+<body>
+
+<!-- navigation -->
+<header class="navigation bg-tertiary">
+	<nav class="navbar navbar-expand-xl navbar-light text-center py-3">
+		<div class="container">
+			<a class="navbar-brand" href="index.html">
+				<img loading="prelaod" decoding="lazy" class="img-fluid" width="80" src="images/qr/logo.png" alt="logo">
+			</a>
+		</div>
+	</nav>
+</header>
+<!-- /navigation -->
+
+
+
+<section class="section">
+	<div class="container">
+		<div class="row justify-content-between align-items-center">
+			<div class="col-lg-6 mt-5 mt-lg-0">
+				<div class="has-video-popup position-relative text-center" style="padding: 50px; border: 3px black solid;" id="displayQr">
+					<img loading="lazy" decoding="async" src="images/Qr/banner.jpg" alt="video thumb" class="rounded-lg w-100">
+					<button type="button" class="video-play-btn border-0 bg-primary qr-btn ">
+						Your Qr Will be Seen Here
+					</button>
+				</div>
+				
+			</div>
+
+			<div class="col-lg-5">
+				<div class="modal-content">
+					<div class="modal-header border-bottom-0">
+					  <h4 class="modal-title" id="exampleModalLabel">Generate Your QR-CODE</h4>
+					</div>
+					<div class="modal-body">
+					  <form action="#!" method="post">
+						<div class="row">
+						  <div class="col-lg-12 mb-4 pb-2">
+							<div class="form-group">
+							  <label for="qrGenerator" class="form-label">Link / Message</label>
+							  <textarea type="text" class="form-control shadow-none" id="link" ></textarea>
+							</div>
+						  </div>
+						  <div class="col-6 mb-4 pb-2">
+							<div class="form-group">
+							  <label for="qrGenerator" class="form-label">logo / Image</label>
+							  <input type="file" class="form-control shadow-none"  id="img" hidden>
+							  <a href="javascript:browse();" class="btn btn-primary w-100" >image</a>
+							</div>
+						  </div>
+						  <div class="col-6 mb-4 pb-2">
+							<div class="form-group">
+								<label for="qrGenerator" class="form-label">---</label>
+							  <button type="button" id="delImg" class="btn btn-primary w-100">Delete</button>
+							</div>
+						  </div>
+						  <div class="col-12 mb-4 pb-2">
+							<div class="form-group">
+							  <label for="qrGenerator" class="form-label">Image Size</label>
+							  <input type="range" min="1" max="30" class="form-control shadow-none" id="margin" >
+							</div>
+						  </div>
+						  <div class="col-6 mb-4 pb-2">
+							<div class="form-group">
+							  <label for="loan_full_name" class="form-label">Right Color</label>
+							  <input type="color" id="color2" class="form-control shadow-none" >
+							</div>
+						  </div>
+						  <div class="col-6 mb-4 pb-2">
+							<div class="form-group">
+							  <label for="qrGenerator" class="form-label">BG Color</label>
+							  <input type="color" id="bgColor" class="form-control shadow-none">
+							</div>
+						  </div>
+						  <div class="col-lg-12 mb-4 pb-2">
+							<div class="form-group">
+							  <label for="loan_email_address" class="form-label">Pattern</label>
+							  <select name="pattern" class="form-control shadow-none" id="dot">
+								<option value="square">square</option>
+								<option value="dots">Dots</option>
+								<option value="rounded">Rounded</option>
+								<option value="extra-rounded">Extra Rounded</option>
+								<option value="classy-rounded">Classy Rounded</option>
+							  </select>
+							</div>
+						  </div>
+						  <div class="col-lg-12">
+							<button type="button" id="downloadBtn" class="btn btn-primary w-100">Download QR-CODE</button>
+						  </div>
+						</div>
+					  </form>
+					</div>
+				  </div>
+			</div>
+			
+		</div>
+	</div>
+</section>
+<div class="modal fade rounded overflow-hidden" id="videoModal" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+		<div class="modal-content border-0">
+			<div class="text-center p-3">
+				<button type="button" class="bg-transparent border-0" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i>
+				</button>
+			</div>
+			<div class="modal-body p-0">
+				<div class="ratio ratio-16x9 rounded-bottom overflow-hidden">
+					<iframe src="" id="showVideo" allowscriptaccess="always" allow="autoplay" allowfullscreen></iframe>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<section class="section qr-steps bg-tertiary">
+	<div class="container">
+		<div class="row justify-content-center align-items-center">
+			<div class="col-lg-7">
+				<div class="section-title text-center">
+					<p class="text-primary text-uppercase fw-bold mb-3">Get Custom QR-CODE</p>
+					<h1>Generate a custom QR-CODE In Just 3 Easy Steps</h1>
+				</div>
+			</div>
+		</div>
+		<div class="row justify-content-center">
+			<div class="col-lg-10">
+				<div class="row justify-content-center">
+					<div class="step-item col-lg-4 col-md-6">
+						<div class="text-center">
+							<p class="count">01</p>
+							<h3 class="mb-3">Fill Out The Form</h3>
+							<p class="mb-0">Input your link, name, message into the provided space</p>
+						</div>
+					</div>
+					<div class="step-item col-lg-4 col-md-6">
+						<div class="text-center">
+							<p class="count">02</p>
+							<h3 class="mb-3">Style Your QR-CODE</h3>
+							<p class="mb-0">Add your logo or image, change colour, change pattern to make your code more beautiful</p>
+						</div>
+					</div>
+					<div class="step-item col-lg-4 col-md-6">
+						<div class="text-center">
+							<p class="count">03</p>
+							<h3 class="mb-3">Download Your Code</h3>
+							<p class="mb-0">Now you just Download the master piece</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="section">
+	<div class="container">
+		<div class="row justify-content-center align-items-center">
+			<div class="col-lg-6">
+				<div class="section-title text-center">
+					<p class="text-primary text-uppercase fw-bold mb-3">Examples</p>
+					<h1>Check This Out</h1>
+					<p>This are some nice QR-CODEs generated here</p>
+				</div>
+			</div>
+		</div>
+		<div class="row justify-content-center">
+			<div class="icon-box-item col-lg-4 col-md-6">
+				<div class="block">
+						<img class="img-fluid"  src="images/Qr/1.png" alt="">
+				</div>
+			</div>
+			<div class="icon-box-item col-lg-4 col-md-6">
+				<div class="block">
+						<img class="img-fluid" src="images/Qr/2.png" alt="">
+				</div>
+			</div>
+			<div class="icon-box-item col-lg-4 col-md-6">
+				<div class="block">
+						<img class="img-fluid" src="images/Qr/3.png" alt="">
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<footer class="section-sm bg-tertiary">
+	<div class="container">
+		<div class="row align-items-center mt-5 text-center text-md-start">
+			<div class="col-lg-4">
+        <a href="index.html">
+          <img loading="prelaod" decoding="lazy" class="img-fluid" width="80" src="images/qr/logo.png" alt="logo">
+        </a>
+			</div>
+			<div class="col-lg-4 col-md-6 mt-4 mt-lg-0">
+				<ul class="list-unstyled list-inline mb-0 text-lg-center">
+					<li class="list-inline-item me-4"><a class="text-black" href="https://github.com/matthewoluwabusyoopoola">matthew Oluwabusyo Opoola</a>
+					</li>
+				</ul>
+			</div>
+			<div class="col-lg-4 col-md-6 text-md-end mt-4 mt-md-0">
+				<ul class="list-unstyled list-inline mb-0 social-icons">
+					<li class="list-inline-item me-3"><a title="Explorer Facebook Profile" class="text-black" href="https://facebook.com/"><i class="fab fa-facebook-f"></i></a>
+					</li>
+					<li class="list-inline-item me-3"><a title="Explorer Twitter Profile" class="text-black" href="https://github.com/matthewoluwabusyoopoola"><i class="fab fa-github"></i></a>
+					</li>
+					<li class="list-inline-item me-3"><a title="Explorer Instagram Profile" class="text-black" href="https://instagram.com/matthewoluwabusyoopoola"><i class="fab fa-instagram"></i></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+<!-- # JS Plugins -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<script src="plugins/bootstrap/bootstrap.min.js"></script>
+<script src="plugins/slick/slick.min.js"></script>
+<script src="plugins/scrollmenu/scrollmenu.min.js"></script>
+<script src="js/qr.js"></script>
+
+<!-- Main Script -->
+<script src="js/script.js" defer></script>
+
+</body>
+</html>
